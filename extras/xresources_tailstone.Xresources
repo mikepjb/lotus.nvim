@@ -1,0 +1,39 @@
+! Tailstone colors for Xresources
+! N.B I copy these across manually when using iTerm2
+
+*.background:   #1c1917
+*.foreground:   #fafaf9
+*.cursorColor:  #fcd34d
+
+! black
+*.color0:       #57534e
+*.color8:       #d6d3d1
+
+! red
+*.color1:       #f87171
+*.color9:       #fecaca
+
+! green
+*.color2:       #a3e635
+*.color10:      #d9f99d
+
+! yellow
+*.color3:       #fbbf24
+*.color11:      #fde68a
+
+! blue
+*.color4:       #22d3ee
+*.color12:      #a5f3fc
+
+! magenta
+*.color5:       #f472b6
+*.color13:      #fbcfe8
+
+! cyan
+*.color6:       #22d3ee
+*.color14:      #bae6fd
+
+! white
+*.color7:       #f1f1f1
+*.color15:      #fffefe
+ 
