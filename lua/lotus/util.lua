@@ -36,10 +36,10 @@ function util.blend(fg, bg, alpha)
 end
 
 function util.darken(hex, amount, bg)
-  return util.blend(hex, bg or util.bg, math.abs(amount))
+    return util.blend(hex, bg or util.bg, math.abs(amount))
 end
 function util.lighten(hex, amount, fg)
-  return util.blend(hex, fg or util.fg, math.abs(amount))
+    return util.blend(hex, fg or util.fg, math.abs(amount))
 end
 
 function util.brighten(color, percentage)

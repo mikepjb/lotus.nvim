@@ -2,6 +2,7 @@ local util = require("lotus.util")
 
 local M = {}
 
+-- TODO delete this
 local tailwind = {
   stone_050 = "#fafaf9",
   stone_100 = "#f5f5f4",
@@ -37,6 +38,30 @@ local tailwind = {
 
 }
 
+local lotus = {
+    base03 = "#1c1c1c",
+    base02 = "#2c2c2c", -- regular background, matching terminal
+    base01 = "#3c3c3c",
+    base00 = "#444444",
+    base0  = "#5e5e5e",
+    base1  = "#cdcdcd",
+    base2  = "#e5e5e5",
+    base3  = "#eeeeee", -- regular text color, matching terminal
+
+    red = "#FF8C8C",
+    light_red = "#FFB2B2",
+    green = "#8BFF95",
+    light_green = "#CBFFB2",
+    yellow = "#FFD08D",
+    light_yellow = "#FFDFB2",
+    blue = "#4FA7FF",
+    light_blue = "#B3CCFF",
+    magenta = "#FF8DFF",
+    light_magenta = "#FFB3FF",
+    cyan = "#8DFFF0",
+    light_cyan = "#B2FFF5",
+}
+
 ---@param config Config
 ---@return ColorScheme
 function M.setup(config)
@@ -47,14 +72,30 @@ function M.setup(config)
   local colors = {}
 
   colors = {
+    base03 = lotus.base03,
+    base02 = lotus.base02,
+    base01 = lotus.base01,
+    base00 = lotus.base00,
+    base0  = lotus.base0,
+    base1  = lotus.base1,
+    base2  = lotus.base2,
+    base3  = lotus.base3, -- regular text color, matching terminal
+
+    red = lotus.red,
+    light_red = lotus.light_red,
+    green = lotus.green,
+    light_green = lotus.light_green,
+    yellow = lotus.yellow,
+    light_yellow = lotus.light_yellow,
+    blue = lotus.blue,
+    light_blue = lotus.light_blue,
+    magenta = lotus.magenta,
+    light_magenta = lotus.light_magenta,
+    cyan = lotus.cyan,
+    light_cyan = lotus.light_cyan,
+
     none = "NONE",
-    bg_dark = tailwind.stone_950,
-    bg = tailwind.stone_900,
     bg_highlight = tailwind.stone_100,
-    terminal_black = tailwind.stone_950,
-    fg = tailwind.stone_050,
-    fg_dark = tailwind.stone_400,
-    fg_gutter = tailwind.stone_600,
     dark3 = tailwind.stone_950, -- NonText?
     comment = tailwind.stone_500,
     dark5 = tailwind.stone_600,
@@ -69,12 +110,8 @@ function M.setup(config)
     magenta2 = tailwind.violet_600,
     purple = tailwind.violet_400,
     orange = tailwind.orange_400,
-    yellow = "#e0af68",
-    green = "#9ece6a",
     green1 = "#73daca",
     green2 = "#41a6b5",
-    teal = "#1abc9c",
-    red = "#f7768e",
     red1 = "#db4b4b",
     git = { change = "#6183bb", add = "#449dab", delete = "#914c54", conflict = "#bb7a61" },
     gitSigns = { add = "#164846", change = "#394b70", delete = "#823c41" },
@@ -83,14 +120,14 @@ function M.setup(config)
     colors.bg = "#1a1b26"
     colors.bg_dark = "#16161e"
   end
-  util.bg = colors.bg
+  util.bg = lotus.base02
   util.day_brightness = config.dayBrightness
 
   colors.diff = {
-    add = util.darken(colors.green2, 0.15),
-    delete = util.darken(colors.red1, 0.15),
-    change = util.darken(colors.blue7, 0.15),
-    text = colors.blue7,
+    add = util.darken(lotus.green, 0.15), -- errors here
+    delete = util.darken(lotus.red, 0.15),
+    change = util.darken(lotus.blue, 0.15),
+    text = lotus.blue,
   }
 
   colors.gitSigns = {
@@ -100,19 +137,19 @@ function M.setup(config)
   }
 
   colors.git.ignore = colors.dark3
-  colors.black = util.darken(colors.bg, 0.8, "#000000")
+  colors.black = util.darken(colors.base02, 0.8, "#000000")
   colors.border_highlight = tailwind.stone_400
   colors.border = colors.black
 
   -- Popups and statusline always get a dark background
   colors.bg_popup = colors.bg_dark
-  colors.bg_statusline = colors.bg
+  colors.bg_statusline = colors.base01
 
   -- Sidebar and Floats are configurable
   colors.bg_sidebar = (config.transparentSidebar and colors.none) or config.darkSidebar and colors.bg_dark or colors.bg
   colors.bg_float = config.darkFloat and colors.bg_dark or colors.bg
 
-  colors.bg_visual = util.darken(tailwind.stone_800, 0.7)
+  colors.bg_visual = util.darken(colors.base01, 0.7)
   colors.bg_search = tailwind.stone_400
   colors.fg_sidebar = colors.fg_dark
 
@@ -120,7 +157,7 @@ function M.setup(config)
   colors.warning = colors.yellow
   colors.info = colors.blue2
   colors.hint = colors.teal
-  colors.user1 = tailwind.amber_400
+  colors.status = colors.light_cyan
 
   util.color_overrides(colors, config)
 
